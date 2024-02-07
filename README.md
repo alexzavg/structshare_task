@@ -3,12 +3,12 @@
 - [Setup](#setup)
 
 # PLEASE WATCH THIS VIDEO BEFORE SETUP 
-- [https://youtu.be/pPgWeIKjBBM](watch video)
+- [https://youtu.be/pPgWeIKjBBM](https://youtu.be/pPgWeIKjBBM)
 
 # Test run examples
-1. Valid sign in: [https://youtu.be/dIj8_iqZnHY](watch video)
-2. Invalid sign in: [https://youtu.be/hwOzUPjvG24](watch video)
-3. Guest user checkout process: [https://youtu.be/poXWTqLstXo](watch video)
+1. Valid sign in: [https://youtu.be/dIj8_iqZnHY](https://youtu.be/dIj8_iqZnHY)
+2. Invalid sign in: [https://youtu.be/hwOzUPjvG24](https://youtu.be/hwOzUPjvG24)
+3. Guest user checkout process: [https://youtu.be/poXWTqLstXo](https://youtu.be/poXWTqLstXo)
 
 # Setup
 1. Install [nodejs & npm](https://nodejs.org/en/) 
@@ -31,5 +31,5 @@
    - go to `e2e.playwright.config.ts`
    - change the `startServer` value to `true` on line 19
    - run the testsreport will automatically open after tests finish
-   - or view this video with explanation: [https://youtu.be/7HOY1WEBV1o](watch video)
+   - or view this video with explanation: [https://youtu.be/7HOY1WEBV1o](https://youtu.be/7HOY1WEBV1o)
 7. Tests also run in CI on commit to `main` branch and an HTML report is published at https://alexzavg.github.io/structshare_task/e2e_tests_prod
