@@ -6,7 +6,7 @@ on:
     branches:
       - main
 
-# variables https://github.com/alexzavg/structshare_test_task/settings/variables/actions
+# variables https://github.com/alexzavg/structshare_task/settings/variables/actions
 env:
   TEST_SUITE:      ${{vars.E2E_TESTS_PROD}}
   CI_PIPELINE_URL: "https://github.com/alexzavg/structshare_task/actions/runs/${{github.run_id}}"
