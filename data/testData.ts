@@ -5,7 +5,7 @@ export const testData = {
   passwordErrMsg: 'Password was incorrect',
   searchQuery: 'Virtual DJ 8.5 Infinity 2023',
   productName: 'Virtual DJ 8.5 Infinity 2023 Software For DJ | Lifetime Access | Unlimited Devices | Huge Discount | Windows Only!!',
-  sumAmount: '16.76',
+  sumAmount: '16',
   shippingEmail: 'me41zavgorodnii+shipping@gmail.com',
   country: 'Ukraine',
   name: 'Oleksandr Zavhorodnii',
