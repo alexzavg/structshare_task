@@ -1,0 +1,68 @@
+name: e2e_tests_prod
+run-name: ⚙️ E2E tests PROD
+
+on:
+  push:
+    branches:
+      - main
+
+# variables https://github.com/alexzavg/structshare_test_task/settings/variables/actions
+env:
+  TEST_SUITE:      ${{vars.E2E_TESTS_PROD}}
+  CI_PIPELINE_URL: "https://github.com/alexzavg/structshare_task/actions/runs/${{github.run_id}}"
+  NODE_VERSION:    20.x
+
+jobs:
+  e2e_tests:
+    name: ⚙️ E2E tests PROD
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🔎 List all environment variables
+      run: env | sort
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: 📗 Use node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: 🔽 Install dependencies
+      run: |
+        npm install
+        npm install -g ts-node
+        npx playwright install chrome
+
+    - name: 📝 Create .env file
+      run: echo "${{secrets.CONFIG_PROD}}" > .env.prod
+
+    - name: ⚙️ Run E2E tests
+      run: xvfb-run npm run $TEST_SUITE
+
+    - name: 📊 Prepare HTML Report Directory
+      if: always()
+      run: |
+        echo "Removing existing e2e_tests_prod directory if it exists..."
+        rm -rf $GITHUB_WORKSPACE/e2e_tests_prod
+        
+        echo "Creating e2e_tests_prod directory..."
+        mkdir -p $GITHUB_WORKSPACE/e2e_tests_prod
+        
+        echo "Current working directory:"
+        pwd
+        
+        echo "Contents of the current working directory:"
+        ls -la
+        
+        echo "Attempting to copy html-report to e2e_tests_prod directory"
+        cp -r $GITHUB_WORKSPACE/html-report/* $GITHUB_WORKSPACE/e2e_tests_prod/
+      shell: bash
+    
+    - name: 📊 Deploy HTML Report
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: e2e_tests_prod
+        destination_dir: e2e_tests_prod
